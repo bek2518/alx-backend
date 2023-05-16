@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 '''
-Creates a FIFOCache class which is a caching system
+Creates a LRUCache class which is a caching system
 '''
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LRUCache(BaseCaching):
     '''
     Class that inherits from BaseCaching and is a caching system that
-    implements FIFO algorithm
+    implements LRU algorithm
     '''
     tracker = []
 
@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         '''
-        Places key, item pair to the dictionary using FIFO algorithm
+        Places key, item pair to the dictionary using the LRU algorithm
         '''
         if key is None or item is None:
             return
@@ -45,6 +45,8 @@ class FIFOCache(BaseCaching):
             return None
 
         if key in self.cache_data.keys():
+            self.tracker.remove(key)
+            self.tracker.append(key)
             return self.cache_data[key]
 
         return None
