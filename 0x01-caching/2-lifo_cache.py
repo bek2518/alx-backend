@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 '''
-Creates a FIFOCache class which is a caching system
+Creates a LIFOCache class which is a caching system
 '''
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     '''
     Class that inherits from BaseCaching and is a caching system that
-    implements FIFO algorithm
+    implements LIFO algorithm
     '''
     tracker = []
 
@@ -20,17 +20,17 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         '''
-        Places key, item pair to the dictionary
+        Places key, item pair to the dictionary using LIFO algorithm
         '''
         if key is None or item is None:
             return
 
         if (len(self.cache_data) >= BaseCaching.MAX_ITEMS and
            key not in self.cache_data.keys()):
-            first_key = self.tracker[0]
-            self.cache_data.pop(first_key)
-            print('DISCARD: {}'.format(first_key))
-            self.tracker.remove(first_key)
+            last_key = self.tracker[-1]
+            self.cache_data.pop(last_key)
+            print('DISCARD: {}'.format(last_key))
+            self.tracker.remove(last_key)
 
         self.cache_data[key] = item
         if key in self.tracker:
