@@ -57,7 +57,6 @@ class LFUCache(BaseCaching):
             count = 0
         self.tracker[key] = count + 1
         self.cache_data[key] = item
-        print(self.tracker)
 
     def get(self, key):
         '''
@@ -70,7 +69,6 @@ class LFUCache(BaseCaching):
             count = self.tracker[key]
             self.tracker.pop(key)
             self.tracker[key] = count + 1
-            print(self.tracker)
             return self.cache_data[key]
 
         return None
