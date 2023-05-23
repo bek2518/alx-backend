@@ -3,10 +3,12 @@
 Flask web application for i18n projects
 '''
 from flask import Flask, render_template
+
+
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def index():
     '''
     Index file that renders the index template
