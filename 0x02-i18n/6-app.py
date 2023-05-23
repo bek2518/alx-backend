@@ -4,7 +4,7 @@ Flask web application for i18n projects
 '''
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
-from typing import Union, Dict
+from typing import Optional, Any
 
 
 users = {
@@ -51,7 +51,7 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-def get_user() -> Union[Dict, None]:
+def get_user() -> object:
     '''
     Function that returns a user dictionary if login_as passed
     or None if not
