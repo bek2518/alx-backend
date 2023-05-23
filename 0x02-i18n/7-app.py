@@ -5,6 +5,7 @@ Flask web application for i18n projects
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 import pytz
+from typing import Union, Dict
 
 
 users = {
@@ -31,7 +32,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     '''
     Function that determines the best match with our supported languages
     '''
@@ -51,7 +52,7 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-def get_user():
+def get_user() -> Union[Dict, None]:
     '''
     Function that returns a user dictionary if login_as passed
     or None if not
@@ -76,7 +77,7 @@ def before_request():
 
 
 @babel.timezoneselector
-def get_timezone():
+def get_timezone() -> str:
     '''
     Function that finds timezone parameter based on criteria
     '''
