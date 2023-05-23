@@ -3,7 +3,7 @@
 Flask web application for i18n projects
 '''
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _
+from flask_babel import Babel, _, format_datetime
 import pytz
 
 
@@ -103,7 +103,8 @@ def index():
     '''
     Index file that renders the index template
     '''
-    return (render_template('7-index.html'))
+    current_time = format_datetime()
+    return (render_template('index.html', current_time=current_time))
 
 
 if __name__ == '__main__':
