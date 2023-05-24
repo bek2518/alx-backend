@@ -42,4 +42,7 @@ def index():
 
 
 if __name__ == '__main__':
+    '''
+    Main function that runs app on port 5000
+    '''
     app.run(host='0.0.0.0', port=5000)
