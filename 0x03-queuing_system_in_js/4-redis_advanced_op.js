@@ -18,3 +18,5 @@ for (const [key, value] of Object.entries(values)) {
     console.log('Reply: ', reply);
   });
 }
+
+client.hgetall('HolbertonSchools', (err, hash) => console.log(hash));
