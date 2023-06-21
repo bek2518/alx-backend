@@ -1,7 +1,7 @@
 import { promisify } from 'util';
 import { createClient } from 'redis';
 
-const express = require('express');
+import express from 'express';
 
 const app = express();
 const hostname = '0.0.0.0';
